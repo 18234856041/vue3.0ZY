@@ -8,8 +8,8 @@ const app = createApp(App)
 /**
  * 引入全局样式
  */
-import 'bootstrap/dist/css/bootstrap.min.css'
-// import './assets/css/base.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+import './assets/css/base.css'
 
 /**
  * 引入全局组件

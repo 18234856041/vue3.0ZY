@@ -5,6 +5,7 @@ del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
+p,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
@@ -15,4 +16,73 @@ time, mark, audio, video{
   padding: 0;
   border: 0;
   list-style: none;
+}
+.w10{
+  width: 10%;
+}
+.w20{
+  width: 20%;
+}
+.w30{
+  width: 30%;
+}
+.w40{
+  width: 40%;
+}
+.w50{
+  width: 50%;
+}
+.w60{
+  width: 60%;
+}
+.w70{
+  width: 70%;
+}
+.w80{
+  width: 80%;
+}
+.w90{
+  width: 90%;
+}
+.w100{
+  width: 100%;
+}
+
+/* 颜色 */
+
+/* 按钮样式 */
+.btn-primary{
+  color: #fff;
+  background-color: #409eff;
+  border-color: #409eff;
+}
+.btn-primary:hover{
+  background: #66b1ff;
+  border-color: #66b1ff;
+}
+.btn-primary:active{
+  background: #3a8ee6;
+    border-color: #3a8ee6;
+}
+button{
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #dcdfe6;
+  color: #606266;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: .1s;
+  font-weight: 500;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
 }
