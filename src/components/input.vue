@@ -17,6 +17,7 @@
 
 <script>
 import { onMounted, reactive, toRefs } from 'vue'
+import { emitter } from '@/components/form'
 export default {
   name: 'wb-input',
   inheritAttrs: false,
@@ -40,20 +41,49 @@ export default {
       message: '',
       // 失去焦点触发（校验）
       iptBlurFn() {
+        let flang = true
         if(props.rules){
           let isrules = props.rules.every(item => {
-            let flang = true
+            // 判断是否为空
             if(item.required){
               flang = (props.modelValue.trim() !== '')
               if(!flang){
                 data.message = item.message
               }
             }
+            // 判断正则是否通过
+            if(item.pattern){
+              console.log(1)
+              flang = (item.pattern.test(props.modelValue))
+              if(!flang){
+                data.message = item.message
+              }
+            }
+            // 自定义校验
+             if(item.validator){
+                item.validator(props.modelValue,function(errVal){
+                  // 判断回调是否有值
+                  flang = false
+                  console.log(errVal)
+                  if(errVal){
+                    if(!flang){
+                      data.message = errVal
+                    }
+                  }else{
+                    console.error('回调请传入错误信息！')
+                  }
+               })
+            }
             return flang
           })
-          console.log(isrules)
+          flang = isrules
           data.iserror = !isrules
         }
+        return flang
+      },
+      // 清空input值（重置）
+      iptClearFn() {
+        emit('update:modelValue','')
       },
       // 值发生改变的时候触发（双向绑定）
       updateValue (e) {
@@ -62,7 +92,9 @@ export default {
     })
     // 加载时
     onMounted(()=>{
-      
+      // 发射给事件监听
+      emitter.emit('rulesItem',data.iptBlurFn);
+      emitter.emit('clearItem',data.iptClearFn);
     })
     return{
       ...toRefs(data)

@@ -1,10 +1,10 @@
 <template>
   <div class="navbox">
     <div class="left">
-      <slot name="logo"></slot>
+      <slot name="logo">111</slot>
     </div>
     <div class="right">
-      <slot name="user"></slot>
+      <slot name="user">222</slot>
     </div>
   </div>
 </template>

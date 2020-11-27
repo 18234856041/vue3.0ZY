@@ -8,7 +8,7 @@ const app = createApp(App)
 /**
  * 引入全局样式
  */
-// import 'bootstrap/dist/css/bootstrap.min.css'
+
 import './assets/css/base.css'
 
 /**
@@ -16,7 +16,6 @@ import './assets/css/base.css'
  * */
 import { InstallAll } from './components'
 app.use(InstallAll)
-
 
 
 app.use(store).use(router).mount('#app')
