@@ -22,7 +22,7 @@ module.exports = {
         proxy: {
             '/api': {
                 /* 目标代理服务器地址 */
-                target: 'http://192.168.1.104:8888/json/',
+                target: 'http://192.168.1.135:8888/json/',
                 /* 允许跨域 */
                 changeOrigin: true,
                 ws: true,

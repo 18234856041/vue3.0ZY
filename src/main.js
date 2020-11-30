@@ -8,7 +8,7 @@ const app = createApp(App)
 /**
  * 引入全局样式
  */
-
+import './assets/css/iconfont.css'
 import './assets/css/base.css'
 
 /**
@@ -18,4 +18,13 @@ import { InstallAll } from './components'
 app.use(InstallAll)
 
 
-app.use(store).use(router).mount('#app')
+/**
+ * 引入公共方法
+ */
+import { ajax } from '@/hooks'
+app.config.globalProperties.$ajax = ajax // 请求
+
+// console.log(app)
+app.use(store)
+app.use(router)
+app.mount('#app')

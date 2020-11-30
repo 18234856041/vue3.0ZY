@@ -6,7 +6,7 @@
 
 <script>
 import { onUnmounted, reactive, toRefs } from 'vue'
-import mitt from 'mitt'
+import mitt from 'mitt'  // 事件监听插件 npm i mitt
  // 实例化事件监听
 export const emitter = mitt()
 export default {
@@ -19,12 +19,16 @@ export default {
     var ArrClear = [] // 清除数组
     emitter.on('*', (type,fn)=>{  // 监听全部
       // rulesItem 验证事件 clearItem // 清空input值
-      if(type == 'rulesItem'){
-        ArrFn.push(fn)
-      }
-      if(type == 'clearItem'){
-        ArrClear.push(fn)
-      }
+      switch(type) {
+        case 'rulesItem':
+            ArrFn.push(fn)
+            break;
+        case 'clearItem':
+            ArrClear.push(fn)
+            break;
+        default:
+            // 默认代码块
+      } 
     })
     // emitter.on('rulesItem', function(rulesFn){ // 监听单个
     //   ArrFn.push(rulesFn)
@@ -47,7 +51,6 @@ export default {
       // 清除input值
       valiClear(){
         // 循环执行数组
-        console.log(ArrClear)
         ArrClear.map(func => func())
       }
     })

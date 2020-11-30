@@ -2,6 +2,7 @@
   <div class="login">
     <div class="loginBox">
       <p class="title">{{ title }}</p>
+      
       <div class="w90">
         <wb-form ref="ruleForm">
           <wb-input
@@ -28,7 +29,8 @@
 </template>
 
 <script>
-import { onMounted, reactive, ref, toRefs } from "vue";
+import { onMounted, reactive, ref, toRefs } from "vue"
+
 export default {
   name: "login",
   setup() {
@@ -61,10 +63,18 @@ export default {
       },
       // 表单提交
       submitFn () {
+        console.log(this)
         // 通过$refs 获取form表单方法
         let rules = this.$refs['ruleForm'].validate()
         if(rules){
           console.log('验证成功！')
+          // 请求后台
+          this.$ajax({
+            url: "login.json",
+          }).then((res) => {
+            console.log(res)
+            this.$router.push({name: 'Home'})
+          });
         }
       },
       // 重置
@@ -72,9 +82,9 @@ export default {
         this.$refs['ruleForm'].valiClear()
       }
     });
-    onMounted(function () {
-      
-    });
+    onMounted(()=>{
+      // console.log(app)
+    })
     return {
       ...toRefs(data),
       userRef

@@ -1,22 +1,32 @@
 <template>
-  <div class="navbox">
-    <div class="left">
-      <slot name="logo">111</slot>
-    </div>
-    <div class="right">
-      <slot name="user">222</slot>
+  <div class="navbox bg-primary">
+    <div class="nav">
+      <div class="left">
+        <slot name="logo"></slot>
+      </div>
+      <div class="right">
+        <slot name="user"></slot>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'wbNav',
-}
+  name: "wbNav",
+};
 </script>
 
 <style scoped>
-  .navbox{
-    display: inline-block;
-  }
+.navbox {
+  width: 100%;
+}
+.nav{
+  width: 80%;
+  min-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
 </style>
