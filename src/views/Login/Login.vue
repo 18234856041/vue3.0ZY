@@ -2,7 +2,6 @@
   <div class="login">
     <div class="loginBox">
       <p class="title">{{ title }}</p>
-      
       <div class="w90">
         <wb-form ref="ruleForm">
           <wb-input
@@ -30,10 +29,11 @@
 
 <script>
 import { onMounted, reactive, ref, toRefs } from "vue"
-
+import { useStore } from 'vuex'
 export default {
   name: "login",
   setup() {
+    const store = useStore()
     // 密码自定义验证
     const passTest = function(value,errcallback){
             let pass = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/
@@ -63,7 +63,7 @@ export default {
       },
       // 表单提交
       submitFn () {
-        console.log(this)
+     
         // 通过$refs 获取form表单方法
         let rules = this.$refs['ruleForm'].validate()
         if(rules){
@@ -73,6 +73,9 @@ export default {
             url: "login.json",
           }).then((res) => {
             console.log(res)
+            store.commit('setNameFn',res.name);
+            store.commit('setLoginFn',1);
+            store.commit('setUserTypeFn',res.userType);
             this.$router.push({name: 'Home'})
           });
         }

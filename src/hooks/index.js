@@ -3,15 +3,22 @@ import Qs from "qs";
 
 // 服务地址
 // axios.defaults.baseURL = "http://192.168.1.135:9527/public";
-axios.defaults.baseURL = '/api'    // ngx代理 
+axios.defaults.baseURL = "/api"; // ngx代理
 
-export function fn1() {
-  return "1";
-}
+/**
+ * 拦截器
+ */
+axios.interceptors.request.use(function(config) {
+  // 在发送请求之前做些什么
+  console.log("加载中~~");
+  return config
+});
+axios.interceptors.response.use(function(config) {
+  // 对响应数据做点什么
+  console.log("加载结束~~");
+  return config
+});
 
-export function fn2() {
-  return "2";
-}
 
 /**
  * 封装axios 请求
@@ -25,11 +32,7 @@ export function fn2() {
  * 使用方法
  * 二次封装如：  (亲测，可以用)
  */
-
 export function ajax(params) {
-  // 开始加载
-  console.log("开始加载~~~");
-
   // 各种判断
   if (params.url === undefined || params.url === null || params.url === "") {
     console.error("URl，不能为空！");
@@ -98,8 +101,6 @@ export function ajax(params) {
     // 开始请求
     axios[params.type](params.url, data)
       .then((res) => {
-        // 停止加载
-        console.log("停止加载~~~");
         // console.log(res);
         const data = res.data;
         // 成功回调

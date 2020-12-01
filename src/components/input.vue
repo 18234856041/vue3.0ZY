@@ -53,7 +53,6 @@ export default {
             }
             // 判断正则是否通过
             if(item.pattern){
-              console.log(1)
               flang = (item.pattern.test(props.modelValue))
               if(!flang){
                 data.message = item.message

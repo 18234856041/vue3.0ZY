@@ -51,6 +51,9 @@ body{
 .w100{
   width: 100%;
 }
+.center{
+  margin: 0 auto;
+}
 /* 下拉 */
 .togo{
   min-width: 100px;
