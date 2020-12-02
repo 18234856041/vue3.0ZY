@@ -1,22 +1,29 @@
 import axios from "axios";
 import Qs from "qs";
+import store from "@/store/index";
 
 // 服务地址
 // axios.defaults.baseURL = "http://192.168.1.135:9527/public";
-axios.defaults.baseURL = "/api"; // ngx代理
+axios.defaults.baseURL = "/api" ;// ngx代理
 
 /**
  * 拦截器
  */
 axios.interceptors.request.use(function(config) {
   // 在发送请求之前做些什么
-  console.log("加载中~~");
+  store.commit('setLoadingFn',true) 
   return config
+}, function (error) {
+  // 对请求错误做些什么
+  return Promise.reject(error);
 });
 axios.interceptors.response.use(function(config) {
   // 对响应数据做点什么
-  console.log("加载结束~~");
+  store.commit('setLoadingFn',false) 
   return config
+}, function (error) {
+  // 对响应错误做点什么
+  return Promise.reject(error);
 });
 
 
@@ -95,7 +102,7 @@ export function ajax(params) {
   }
 
   // 请求超时时间
-  axios.defaults.timeout = 5000;
+  axios.defaults.timeout = 10000;
 
   return new Promise((resolve, reject) => {
     // 开始请求
@@ -115,7 +122,7 @@ export function ajax(params) {
         // 如果不想2次分装这里处理各种返回状态码
       })
       .catch((err) => {
-        console.log("错误，停止加载~~~");
+        store.commit('setLoadingFn',false) 
         reject(err);
       });
   });

@@ -14,5 +14,9 @@ export default{
   // 设置用户类型
   setUserTypeFn(state, value){
     state.userType = value
+  },
+  // 设置loading
+  setLoadingFn (state, value){
+    state.showLoading = value
   }
 }

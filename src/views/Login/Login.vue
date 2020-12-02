@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { onMounted, reactive, ref, toRefs } from "vue"
+import { onMounted, reactive, toRefs } from "vue"
 import { useStore } from 'vuex'
 export default {
   name: "login",
@@ -41,7 +41,6 @@ export default {
               errcallback('密码错误！')
             }
           }
-    const userRef = ref('ruleForm')
     // 响应式数据
     const data = reactive({
       title: "折叶",
@@ -90,7 +89,6 @@ export default {
     })
     return {
       ...toRefs(data),
-      userRef
     };
   },
 };

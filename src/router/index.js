@@ -26,11 +26,8 @@ const router = createRouter({
 
 // 权限
 router.beforeEach((to, from, next) => {
-  // 是否访问登录页
-  if (to.name === "Login") {
-    store.commit('setLoginFn',0)
-    next();
-  } else {
+  // 是否需要登录
+  if(to.meta.requireLogin){
     //  用户是否登录
     if (to.meta.requireLogin && !store.state.isLogin) {
       next("/");
@@ -38,7 +35,15 @@ router.beforeEach((to, from, next) => {
     // 是否有权限
     else if (to.meta.type && to.meta.type.includes(store.state.userType)) {
       next();
+    }else{
+      next('/')
     }
+  }else{
+    next()
+    // 访问登录页
+    if (to.name === "Login") {
+      store.commit('setLoginFn',0)
+    } 
   }
 });
 

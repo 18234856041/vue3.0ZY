@@ -28,6 +28,7 @@
     </template>
   </wb-nav>
   <router-view />
+  <wb-loading v-if="showLoading"></wb-loading>
 </template>
 
 <script>
@@ -44,6 +45,7 @@ export default {
       logo: require('@/assets/img/logo.png'), // logo
       showTogo: false,  // 我的下拉菜单
       userName: computed(()=> store.state.userName ),
+      showLoading: computed(()=> store.state.showLoading ),
       userOptions: [
         {id: 1, name: '退出'},
       ],

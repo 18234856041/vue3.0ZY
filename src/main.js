@@ -22,6 +22,7 @@ app.use(InstallAll)
  * 引入公共方法
  */
 import { ajax } from '@/hooks'
+// console.log(ajax)
 app.config.globalProperties.$ajax = ajax // 请求
 
 // console.log(app)

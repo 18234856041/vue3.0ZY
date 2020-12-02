@@ -1,61 +1,128 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
 p,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video{
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
   list-style: none;
 }
-body{
+body {
   font-size: 16px;
   color: #666666;
 }
-.w10{
+.w10 {
   width: 10%;
 }
-.w20{
+.w20 {
   width: 20%;
 }
-.w30{
+.w30 {
   width: 30%;
 }
-.w40{
+.w40 {
   width: 40%;
 }
-.w50{
+.w50 {
   width: 50%;
 }
-.w60{
+.w60 {
   width: 60%;
 }
-.w70{
+.w70 {
   width: 70%;
 }
-.w80{
+.w80 {
   width: 80%;
 }
-.w90{
+.w90 {
   width: 90%;
 }
-.w100{
+.w100 {
   width: 100%;
 }
-.center{
+.center {
   margin: 0 auto;
 }
 /* 下拉 */
-.togo{
+.togo {
   min-width: 100px;
   top: 40px;
   left: 0px;
@@ -65,12 +132,12 @@ body{
   border: 1px solid #e4e7ed;
   border-radius: 4px;
   background-color: #fff;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   margin: 5px 0;
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
-.togo li{
+.togo li {
   font-size: 14px;
   padding: 0 20px;
   position: relative;
@@ -84,18 +151,18 @@ body{
   cursor: pointer;
   text-align: center;
 }
-.togo li:hover{
+.togo li:hover {
   background-color: #f5f7fa;
   color: #409eff;
   font-weight: 700;
 }
 /* 颜色 */
-.bg-primary{
+.bg-primary {
   background-color: #409eff;
 }
 
 /* input样式 */
-input{
+input {
   -webkit-appearance: none;
   background-color: #fff;
   background-image: none;
@@ -109,32 +176,32 @@ input{
   line-height: 40px;
   outline: none;
   padding: 0 15px;
-  transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   width: 100%;
 }
-input:focus{
+input:focus {
   border-color: #409eff;
 }
 /* 按钮样式 */
-.btn-primary{
+.btn-primary {
   color: #fff;
   background-color: #409eff;
   border-color: #409eff;
 }
-.btn-primary:hover{
+.btn-primary:hover {
   background: #66b1ff;
   border-color: #66b1ff;
 }
-.btn-primary:active{
+.btn-primary:active {
   background: #3a8ee6;
   border-color: #3a8ee6;
 }
-button{
+button {
   display: inline-block;
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  background: #fff; 
+  background: #fff;
   border: 1px solid #dcdfe6;
   color: #606266;
   -webkit-appearance: none;
@@ -142,7 +209,7 @@ button{
   box-sizing: border-box;
   outline: none;
   margin: 0;
-  transition: .1s;
+  transition: 0.1s;
   font-weight: 500;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -150,4 +217,24 @@ button{
   padding: 12px 20px;
   font-size: 14px;
   border-radius: 4px;
+}
+
+/* 自定义动画
+  XXX : 定义的动画名称
+  3s : 动画时间
+  linear : 动画以何种运行轨迹完成一个周期
+  infinite :规定动画应该无限次播放
+  animation: XXX 3s linear infinite;
+*/
+/*自定义动画类----顺时针旋转（使用这个动画的时候才设置动画执行时间）*/
+@keyframes rotating  {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

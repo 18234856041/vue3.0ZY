@@ -41,10 +41,10 @@ export default {
           title: "test4的专栏",
           content: "这是的test4专栏，有一段非常有意思的简介可以更新一下欧", 
         },
-      ],
+      ]
     });
     return{
-      ...toRefs(data)
+      ...toRefs(data),
     }
   },
 };
